@@ -5,23 +5,55 @@ class Book extends Component {
     height: 193
   };
 
+  options = [
+    {
+      title: 'Move to...',
+      value: 'none',
+      disabled: true
+    },
+    {
+      title: 'Currently Reading',
+      value: 'currentlyReading',
+      disabled: false
+    },
+    {
+      title: 'Want to Read',
+      value: 'wantToRead',
+      disabled: false
+    },
+    {
+      title: 'Read',
+      value: 'read',
+      disabled: false
+    },
+    {
+      title: 'none',
+      value: 'none',
+      disabled: false
+    },
+  ];
+
   createBackgroundImageString(url) {
     return `url("${url}")`
   }
 
   render() {
+    console.log(this.props.book.shelf + " " + this.props.book.title);
     return(
         <div className="book">
           <div className="book-top">
             <div className="book-cover" style={{ width: this.bookCoverSpecs.width, height: this.bookCoverSpecs.height,
               backgroundImage: this.createBackgroundImageString(this.props.book.imageLinks.smallThumbnail)}}></div>
             <div className="book-shelf-changer">
-              <select>
-                <option value="none" disabled>Move to...</option>
-                <option value="currentlyReading">Currently Reading</option>
-                <option value="wantToRead">Want to Read</option>
-                <option value="read">Read</option>
-                <option value="none">None</option>
+              <select value={this.props.book.shelf}>
+                {this.options.map((option) => {
+                    if (option.disabled) {
+                      return (<option value={option.value} disabled>{option.title}</option>)
+                    } else {
+                      return (<option value={option.value}>{option.title}</option>)
+                    }
+                  })
+                }
               </select>
             </div>
           </div>
