@@ -37,14 +37,21 @@ class Book extends Component {
     return `url("${url}")`
   }
 
+  createBookCoverStyle(thumbnailUrl, width, height) {
+    let style = {
+      width,
+      height,
+    };
+    if (thumbnailUrl) { style.backgroundImage = this.createBackgroundImageString(thumbnailUrl) }
+    return style;
+  }
+
   render() {
-    console.log(this.props.book.shelf + " " + this.props.book.title);
     return(
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: this.bookCoverSpecs.width, height: this.bookCoverSpecs.height,
-              backgroundImage: this.createBackgroundImageString(this.props.book.imageLinks.smallThumbnail)}}></div>
-            <div className="book-shelf-changer">
+            <div className="book-cover" style={}></div>
+            <div className="book-shelf-changer">`
               <select value={this.props.book.shelf}>
                 {this.options.map((option) => {
                     if (option.disabled) {
@@ -56,6 +63,7 @@ class Book extends Component {
                 }
               </select>
             </div>
+
           </div>
           <div className="book-title">{this.props.book.title}</div>
           <div className="book-authors">{this.props.book.authors.join(", ")}</div>
