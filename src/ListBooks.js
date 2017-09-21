@@ -13,8 +13,7 @@ class ListBooks extends Component{
               {this.props.bookshelves.map(bookshelf => (<Bookshelf getAllBooks={this.props.getAllBooks} key={bookshelf.shelfType} bookshelfTitle={bookshelf.bookshelfTitle} shelfType={bookshelf.shelfType} books={this.props.books}/>))}
             </div>
             <div className="open-search">
-              <Link to="/search">
-              </Link>
+              <Link to="/search"/>
             </div>
           </div>
         </div>

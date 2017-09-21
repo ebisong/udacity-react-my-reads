@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import Book from './Book';
 class Bookshelf extends Component {
-  state = {
-
-  };
-
   filterBooksForShelf(books, shelfType) {
     return books.filter(book => book.shelf === shelfType);
   }

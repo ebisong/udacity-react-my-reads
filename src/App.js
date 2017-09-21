@@ -35,7 +35,7 @@ class App extends Component {
     getAll().then((books) => this.setState({
       books
     }));
-  }
+  };
 
   render() {
     return (

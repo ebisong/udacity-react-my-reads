@@ -68,7 +68,7 @@ class Book extends Component {
         .then(() => {
           this.props.getAllBooks()
         });
-  }
+  };
 
   render() {
     return(
