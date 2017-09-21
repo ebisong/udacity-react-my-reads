@@ -28,6 +28,10 @@ class App extends Component {
   ];
 
   componentDidMount() {
+    this.getAllBooks();
+  }
+
+  getAllBooks = () => {
     getAll().then((books) => this.setState({
       books
     }));
@@ -37,10 +41,10 @@ class App extends Component {
     return (
       <div className="App">
         <Route path="/" exact render={() => (
-            <ListBooks books={this.state.books} bookshelves={this.bookshelves}/>
+            <ListBooks getAllBooks={this.getAllBooks} books={this.state.books} bookshelves={this.bookshelves}/>
         )}/>
         <Route path="/search" exact render={() => (
-            <SearchBooks/>
+            <SearchBooks getAllBooks={this.getAllBooks} />
         )}/>
       </div>
     );
